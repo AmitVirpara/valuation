@@ -1,0 +1,46 @@
+@import '../../../assets/scss/variables.scss';
+.amt-login{
+    .container-fluid{
+        height: 96vh;
+        vertical-align: middle;
+        display: flex;
+        width: 320px;
+        .loginbox{
+            padding: 20px;
+            border: 6px solid $bordercolor;
+            -webkit-border: 6px solid $bordercolor;
+            -o-border: 6px solid $bordercolor;
+            -ms-border: 6px solid $bordercolor;
+            -moz-border: 6px solid $bordercolor;
+            box-shadow: 0px 0 10px $boxshadowcolor;            
+            -o-box-shadow: 0px 0 10px $boxshadowcolor;            
+            -ms-box-shadow: 0px 0 10px $boxshadowcolor;            
+            -moz-box-shadow: 0px 0 10px $boxshadowcolor;            
+            -webkit-border-radius: 10px;
+            background-color: $darkbgcolor;
+            color: $darkcolor;
+
+            form{
+                background-color: $frmbgcolor;
+                padding: 20px;
+                margin: -20px;
+            }
+
+            .logo-wrap{
+                height: 74px;
+                position: relative;
+                margin: 0px 0px 20px 0px;
+                .logo{
+                    height: 74px;
+                    width: auto;
+                    position: absolute;
+                    left: 10px;
+                    top: -65px;
+                }
+            }
+        }
+        .text-muted{
+            color: $darkcolor !important;
+        }
+    }
+}

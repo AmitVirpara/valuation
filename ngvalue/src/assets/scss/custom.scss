@@ -3,3 +3,14 @@ body{
     color: $color;
     background-color: $bgcolor;
 }
+
+/*overwrite bootstrap forms*/
+.form-check-input {
+    // position: absolute;
+    margin-top: 0.44rem;
+    // margin-left: -1.25rem;
+}
+.alert-danger{
+    background-color: $alertbgcolor;
+    color:$darkcolor;
+}
