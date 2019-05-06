@@ -1,3 +1,45 @@
-<p>
-  sidenavbar works!
-</p>
+<div class="amt-sidebar" [ngClass]="{'amt-active':menuWidth>40, '':menuWidth<=40}" style="width:menuWidth;">
+  <div class="profile-user">
+    <div class="profilewrap">
+      <a href="javascript:void(0)">
+        <img class="profileimg" src="../../assets/images/logo.png" alt="">
+      </a>
+      <div class="title">Admin</div>
+    </div>
+  </div>
+  <hr/>
+  <div class="text-center navtitle">Navigation</div>
+  <hr/>
+  <ul class="nav nav-sidebar">
+      <li class="nav-item" [routerLinkActive]="['active']" ><a [routerLink]="['/amt/work']">Home</a></li>
+      <li class="nav-item" [routerLinkActive]="['active']" ><a [routerLink]="['/amt/user/list']">Users</a></li>
+      <li class="nav-item" [routerLinkActive]="['active']"><a [routerLink]="['/amt/customer/create']">Customers</a></li>
+      <li class="nav-item"><a href="">IT-Valuation</a></li>
+      <li class="nav-item"><a href="">Valuation</a></li>
+      <li class="nav-item" [routerLinkActive]="['active']"><a [routerLink]="['/amt/settings']">Settings</a></li>
+      <li class="nav-item" [routerLinkActive]="['active']"><a [routerLink]="['/amt/print']">Print</a></li>
+      <!-- <li class="nav-item"><a href="">jkl</a></li>
+      <li class="nav-item"><a href="">jkl</a></li>
+      <li class="nav-item"><a href="">jkl</a></li>
+      <li class="nav-item"><a href="">jkl</a></li>
+      <li class="nav-item"><a href="">jkl</a></li>
+      <li class="nav-item"><a href="">jkl</a></li>
+      <li class="nav-item"><a href="">jkl</a></li>
+      <li class="nav-item"><a href="">jkl</a></li>
+      <li class="nav-item"><a href="">jkl</a></li>
+      <li class="nav-item"><a href="">jkl</a></li>
+      <li class="nav-item"><a href="">jkl</a></li>
+      <li class="nav-item"><a href="">jkl</a></li>
+      <li class="nav-item"><a href="">jkl</a></li>
+      <li class="nav-item"><a href="">jkl</a></li>
+      <li class="nav-item"><a href="">jkl</a></li>
+      <li class="nav-item"><a href="">jkl</a></li> -->
+  </ul>
+  
+  <div class="footer text-center">
+    <hr/>
+    @Amt &copy;2019
+    <hr/>
+  </div>
+
+</div>

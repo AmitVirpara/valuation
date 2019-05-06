@@ -1,0 +1,106 @@
+@import './../../assets/scss/variables.scss';
+.amt-active{
+    width: 260px !important;
+    transition: all 0.3ms;
+    -moz-transition: all 0.3ms;
+    -webkit-transition: all 0.3ms;
+    -o-transition: all 0.3ms;
+    
+}
+.amt-sidebar{
+    position: absolute;
+    // width: 260px;
+    width: 0px;
+    height: calc(100vh - 65px);
+    overflow: hidden;
+    overflow-y: auto;
+    top: 64px;
+    left: 5px;
+    background-color: $darkbgcolor;
+    z-index: 1100;
+    box-shadow: 2px 3px 5px #000000;
+    transition: all 0.3ms;
+    -moz-transition: all 0.3ms;
+    -webkit-transition: all 0.3ms;
+    -o-transition: all 0.3ms;
+    .profile-user {
+        padding: 10px;
+        // background-color: $darkcolor;
+        color: $darkcolor;
+        .profilewrap{
+            width: 100%;
+            // height: 150px;
+            text-align: center;
+            a{
+                .profileimg{
+                    height: 60px;
+                    width: 60px;
+                    border-radius: 50%;
+                    padding: 2px;
+                    border:2px solid $bordercolor;
+                    margin: 10px;
+                }
+            }
+            .title{
+                font-size: 1.1em;
+            }
+        }
+    }
+    .nav{
+        display: block;
+    }
+    .navtitle{
+        font-weight: bold;
+        background-color: $bgcolortrans;
+    }
+    hr{
+        margin-top: 0.1rem;
+        margin-bottom: 0.1rem;
+    }
+    .nav-sidebar {
+        margin-right: -21px; /* 20px padding + 1px border */
+        margin-bottom: 20px;
+        margin-left: -20px;
+        width: calc(100% + 20px);
+                
+        .nav-item {
+            min-height: 50px;
+            line-height: 45px;
+            margin: 0px;
+            padding: 2px 0px 2px 20px;
+            text-overflow: ellipsis;
+            word-break: break-all;
+            overflow-wrap: break-word;
+            border: 0px solid $bordercolor;
+            border-bottom: 1px solid $bordercolor;
+            a{
+                padding-right: 20px;
+                padding-left: 20px;
+                width: 100%;
+                display: block;
+                text-decoration: none;
+                color: $darkcolor;
+                font-weight: 100;
+            }
+            a:hover,a:focus{
+                // color: $darkcolor;
+            }
+        }
+        .nav-item:hover{
+            background-color: $frmbgcolor;
+        //    background-color: $darkbgcolor;
+        }
+        .active {
+            a {
+                color: $darkcolor;
+                background-color: $frmbgcolor;
+            }            
+        }
+    }
+    .footer{
+        // position: absolute;
+        // bottom: 0px;
+        // width: 100%;
+    }
+    
+}

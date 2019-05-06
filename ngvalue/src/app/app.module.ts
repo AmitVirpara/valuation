@@ -9,6 +9,13 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { WorkboardComponent } from './workboard/workboard.component';
 import { LayoutComponent } from './layout/layout.component';
 import { SidenavbarComponent } from './sidenavbar/sidenavbar.component';
+import { ListviewComponent } from './user/listview/listview.component';
+import { UserCreateComponent } from './user-create/user-create.component';
+import { UserListComponent } from './user-list/user-list.component';
+import { CustomerCreateComponent } from './customer-create/customer-create.component';
+import { CustomerListComponent } from './customer-list/customer-list.component';
+import { SettingOptionsComponent } from './setting-options/setting-options.component';
+import { UserDeleteComponent } from './user-delete/user-delete.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +24,14 @@ import { SidenavbarComponent } from './sidenavbar/sidenavbar.component';
     NavbarComponent,
     WorkboardComponent,
     LayoutComponent,
-    SidenavbarComponent
+    ListviewComponent,
+    SidenavbarComponent,
+    UserCreateComponent,
+    UserListComponent,
+    CustomerCreateComponent,
+    CustomerListComponent,
+    SettingOptionsComponent,
+    UserDeleteComponent
   ],
   imports: [
     BrowserModule,

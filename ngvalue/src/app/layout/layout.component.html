@@ -1,18 +1,11 @@
 
 
-
-<header class="container">
-  <app-navbar></app-navbar>
+<header class="">
+  <app-navbar (childEventSidemenu)="sidemenuWidth=$event"></app-navbar>
 </header>
-<section class="container">
-  <div class="row">
-    <div class="col-2">
-        <app-sidenavbar></app-sidenavbar>
-    </div>
-    <div class="col-10">
-      <p>
-        layout works!
-      </p>    
-    </div>
+<section class="container-fluid amtsidebar-active">
+  <app-sidenavbar [menuWidth]="sidemenuWidth"></app-sidenavbar>
+  <div>
+    <router-outlet></router-outlet>
   </div>
 </section>

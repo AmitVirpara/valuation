@@ -1,0 +1,48 @@
+@import './../../assets/scss/variables.scss';
+.amt-navbar{
+    .container-fluid{
+        padding:0;
+        height: 65px;
+        .navbar{
+            width: 100%;
+            padding: 2px 60px 2px 2px;
+            background-color: $darkbgcolor;
+            color: $darkcolor;
+            box-shadow: 2px 3px 5px #000000;
+            z-index: 1101;
+            .asidebar{
+                height: 30px;
+                width: 50px;
+                text-align: center;
+                .fa{
+                    font-size: 20px;
+                    line-height: 30px;
+                    color: $darkcolor;
+                }
+            }
+            .navbar-brand{
+
+                .logo-wrap{
+                    height: 50px;
+                    position: relative;
+                    margin: 0px 0px 0px 0px;
+                    .logo{
+                        height: 50px;
+                        width: auto;
+                    }
+                }
+            }
+            .nav{
+                right: 0;
+                position: absolute;
+                .nav-item{
+                    .nav-link{
+                        cursor: pointer;
+                    }
+
+                }
+            }
+        }
+    }
+    
+}

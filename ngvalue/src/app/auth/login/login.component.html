@@ -15,11 +15,11 @@
                 <label for="exampleInputEmail1">Email/Name</label>
                 <input type="email" formControlName="name"  class="form-control" [ngClass]="{ 'is-invalid': name.invalid && (name.dirty || name.touched) }" aria-describedby="emailHelp" placeholder="Enter email">
                 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                <div *ngIf="name.invalid && (name.dirty || name.touched)">
-                  <div *ngIf="name.errors.required" class="alert alert-danger" role="alert">
+                <div *ngIf="name.invalid && (name.dirty || name.touched)"  class="alert alert-error" role="alert">
+                  <div *ngIf="name.errors.required">
                     Name is required.
                   </div>
-                  <div *ngIf="name.errors.minlength" class="alert alert-danger" role="alert">
+                  <div *ngIf="name.errors.minlength">
                     Name must be at least 4 characters long.
                   </div>
                 </div>
@@ -27,7 +27,7 @@
               <div class="form-group">
                 <label for="exampleInputPassword1">Password</label>
                 <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': password.invalid && (password.dirty || password.touched) }" placeholder="Password">
-                <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger" role="alert">
+                <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-error" role="alert">
                   <div *ngIf="password.errors.required">
                     Password is required.
                   </div>

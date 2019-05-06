@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-sidenavbar',
@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidenavbarComponent implements OnInit {
 
+  @Input() menuWidth:Number = 0;
   constructor() { }
 
   ngOnInit() {

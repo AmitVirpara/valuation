@@ -1,7 +1,7 @@
 @import 'variables';
 body{
     color: $color;
-    background-color: $bgcolor;
+    // background-color: $bgcolor;
 }
 
 /*overwrite bootstrap forms*/
@@ -10,7 +10,11 @@ body{
     margin-top: 0.44rem;
     // margin-left: -1.25rem;
 }
-.alert-danger{
+.alert-error{
     background-color: $alertbgcolor;
     color:$darkcolor;
+    font-size: 12px;
+}
+.table>thead>tr>th, .table>tbody>tr>th, .table>tfoot>tr>th, .table>thead>tr>td, .table>tbody>tr>td, .table>tfoot>tr>td{
+    padding: 0.4em;
 }

@@ -6,6 +6,7 @@ import { ListviewComponent } from './listview/listview.component';
 @NgModule({
   declarations: [UserComponent, ListviewComponent],
   imports: [
+    ListviewComponent,
     CommonModule
   ]
 })

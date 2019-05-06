@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./layout.component.scss']
 })
 export class LayoutComponent implements OnInit {
-
+  sidemenuWidth:Number = 260;
   constructor() { }
 
   ngOnInit() {
