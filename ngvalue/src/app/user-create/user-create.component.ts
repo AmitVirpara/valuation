@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { DataService } from '../shared/data.service';
 
 @Component({
   selector: 'app-user-create',
@@ -9,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class UserCreateComponent implements OnInit {
 
+  userId: Number;
   frmGrpLogin: FormGroup;
   userlogin:any = {
     displayname:'',
@@ -24,7 +26,7 @@ export class UserCreateComponent implements OnInit {
   get email() { return this.userlogin.email; }
   get password() { return this.frmGrpLogin.controls.password; }
   get cpassword() { return this.frmGrpLogin.controls.cpassword; }
-  constructor(private frmBuilder: FormBuilder, private route:Router) { }
+  constructor(private frmBuilder: FormBuilder, private route:Router, private activeRouter: ActivatedRoute, private dataservice: DataService) { }
 
   ngOnInit() {
     this.frmGrpLogin = this.frmBuilder.group({
@@ -34,6 +36,11 @@ export class UserCreateComponent implements OnInit {
       cpassword : ['', [ Validators.required, Validators.minLength(4) ] ],
     }
     );
+    this.activeRouter.queryParams.subscribe(params => {
+      console.log('Subscribe params', params);
+      this.userId = params['userId'];
+      this.userlogin = this.dataservice.userDetails(this.userId);
+    })
   }
 
   onSubmit(){

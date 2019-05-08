@@ -4,7 +4,7 @@
   <div class="row">
     <div class="col-md-6">Users</div>
     <div class="col-md-6 text-right">
-        <button type="button" class="abtn btn btn-success btn-sm" title="Refresh"><span class="fa fa-sync"></span></button>
+        <button type="button" class="abtn btn btn-success btn-sm" title="Refresh" autofocus><span class="fa fa-sync"></span></button>
         <a class="abtn btn btn-success btn-sm" [routerLink]="['/amt/user/create']" title="New User"><span class="fa fa-plus"></span></a>
         <a class="abtn btn btn-primary btn-sm" href="javascript:void(0);" title="Previous"><span class="fa fa-step-backward"></span></a>
         <a class="abtn btn btn-primary btn-sm" href="javascript:void(0);" title="Next"><span class="fa fa-step-forward"></span></a>
@@ -14,7 +14,7 @@
 </h2>
 </header>
 <div>
-  <table class="table">
+  <table class="table amttbl">
     <thead>
       <tr>
         <th>No.</th>
@@ -27,61 +27,16 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>1</td>
-        <td>User Name</td>
-        <td>Login</td>
-        <td>Email</td>
+      <tr *ngFor="let ud of UserList" (dblclick)="doubleclick(ud.id)">
+        <td>{{ud.id}}</td>
+        <td>{{ud.name}}</td>
+        <td>{{ud.displayname}}</td>
+        <td>{{ud.email}}</td>
         <td>Active</td>
         <td>2019-05-21</td>
         <td>
-            <a class="abtn text-success" [routerLink]="['/amt/user/edit/1']" title="Edit"><span class="fa fa-edit"></span></a>
-            <a class="abtn text-danger" [routerLink]="['/amt/user/delete/1']" title="Delete"><span class="fa fa-trash-alt"></span></a>
-        </td>
-      </tr>
-      <tr>
-        <td>1</td>
-        <td>User Name</td>
-        <td>Login</td>
-        <td>Email</td>
-        <td>Active</td>
-        <td>2019-05-21</td>
-        <td>
-            <a class="abtn text-success" [routerLink]="['/amt/user/edit']" title="Edit"><span class="fa fa-edit"></span></a>
-            <a class="abtn text-danger" [routerLink]="['/amt/user/delete']" title="Delete"><span class="fa fa-trash-alt"></span></a>
-        </td>
-      </tr>
-      <tr>
-        <td>1</td>
-        <td>User Name</td>
-        <td>Login</td>
-        <td>Email</td>
-        <td>Active</td>
-        <td>2019-05-21</td>
-        <td>
-            <a class="btn btn-warning btn-sm" [routerLink]="['/amt/user/edit']"><span class="fa fa-edit"></span></a>
-        </td>
-      </tr>
-      <tr>
-        <td>1</td>
-        <td>User Name</td>
-        <td>Login</td>
-        <td>Email</td>
-        <td>Active</td>
-        <td>2019-05-21</td>
-        <td>
-            <a class="btn btn-warning btn-sm" [routerLink]="['/amt/user/edit']"><span class="fa fa-edit"></span></a>
-        </td>
-      </tr>
-      <tr>
-        <td>1</td>
-        <td>User Name</td>
-        <td>Login</td>
-        <td>Email</td>
-        <td>Active</td>
-        <td>2019-05-21</td>
-        <td>
-            <a class="btn btn-warning btn-sm" [routerLink]="['/amt/user/edit']"><span class="fa fa-edit"></span></a>
+            <a class="abtn text-success" [routerLink]="['/amt/user/edit/',ud.id]" title="Edit"><span class="fa fa-edit"></span></a>
+            <a class="abtn text-danger" [routerLink]="['/amt/user/delete/',ud.id]" title="Delete"><span class="fa fa-trash-alt"></span></a>
         </td>
       </tr>
     </tbody>
@@ -97,6 +52,9 @@
         </tr>
     </tfoot>
   </table>
+  <div class="page">
+    <!-- <div class="col" *ngFor="let "></div> -->
+  </div>
 </div>
 <footer>
 
