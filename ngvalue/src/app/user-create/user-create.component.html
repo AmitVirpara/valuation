@@ -69,11 +69,15 @@
                 <input type="{{txttypecpassword}}" id="cpassword" formControlName="cpassword" class="form-control" [ngClass]="{ 'is-invalid': cpassword.invalid && (cpassword.dirty || cpassword.touched) }" placeholder="Confirm Password">
               </div>
               <div *ngIf="cpassword.invalid && (cpassword.dirty || cpassword.touched)" class="alert alert-error" role="alert">
+                {{logs()}}
                 <div *ngIf="cpassword.errors.required">
                   Password is required.
                 </div>
                 <div *ngIf="cpassword.errors.minlength">
                   Password must be at least 4 characters long.
+                </div>
+                <div *ngIf="cpassword.errors.isNotMatchError">
+                  Password must be same.
                 </div>
               </div>
               

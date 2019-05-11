@@ -35,8 +35,8 @@
         <td>Active</td>
         <td>2019-05-21</td>
         <td>
-            <a class="abtn text-success" [routerLink]="['/amt/user/edit/',ud.id]" title="Edit"><span class="fa fa-edit"></span></a>
-            <a class="abtn text-danger" [routerLink]="['/amt/user/delete/',ud.id]" title="Delete"><span class="fa fa-trash-alt"></span></a>
+            <a class="abtn text-success" [routerLink]="['/amt/user/edit']" [queryParams]="{userId: ud.id}" title="Edit"><span class="fa fa-edit"></span></a>
+            <a class="abtn text-danger" [routerLink]="['/amt/user/delete']" [queryParams]="{userId: ud.id}" title="Delete"><span class="fa fa-trash-alt"></span></a>
         </td>
       </tr>
     </tbody>

@@ -16,8 +16,8 @@ const routes: Routes = [
     children:[
       { path: 'work', component: WorkboardComponent},
       { path: 'user/create', component: UserCreateComponent},
-      { path: 'user/edit/:id', component: UserCreateComponent},
-      { path: 'user/delete/:id', component: UserDeleteComponent},
+      { path: 'user/edit', component: UserCreateComponent},
+      { path: 'user/delete', component: UserDeleteComponent},
       { path: 'user/list', component: UserListComponent},
       { path: 'customer/create', component: CustomerCreateComponent},
       { path: 'settings', component: SettingOptionsComponent},

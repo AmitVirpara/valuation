@@ -21,7 +21,7 @@ export class DataService {
   }
   userDetails(id: Number):any {
     console.log('userDetails', id);
-    return {id:1, displayname:'Amit 1', name:'Amit', password:'', cpassword:'', email: 'amtvirpara@gmail.com'};
+    return {id:1, displayname:'Amit 1', name:'Amit', password:'mypass', cpassword:'', email: 'amtvirpara@gmail.com'};
   }
   UserDelete():any {
     return true;
