@@ -10,7 +10,6 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { WorkboardComponent } from './workboard/workboard.component';
 import { LayoutComponent } from './layout/layout.component';
 import { SidenavbarComponent } from './sidenavbar/sidenavbar.component';
-import { ListviewComponent } from './user/listview/listview.component';
 import { UserCreateComponent } from './user-create/user-create.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { CustomerCreateComponent } from './customer-create/customer-create.component';
@@ -25,7 +24,6 @@ import { UserDeleteComponent } from './user-delete/user-delete.component';
     NavbarComponent,
     WorkboardComponent,
     LayoutComponent,
-    ListviewComponent,
     SidenavbarComponent,
     UserCreateComponent,
     UserListComponent,

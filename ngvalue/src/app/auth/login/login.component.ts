@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { DataServiceService } from './../../shared/data-service.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -22,7 +21,7 @@ export class LoginComponent implements OnInit {
   get email() { return this.userlogin.email; }
   get password() { return this.frmGrpLogin.controls.password; }
 
-  constructor(private frmBuilder: FormBuilder, private route:Router, private datasrv: DataServiceService) { }
+  constructor(private frmBuilder: FormBuilder, private route:Router,) { }
 
   ngOnInit() {
 

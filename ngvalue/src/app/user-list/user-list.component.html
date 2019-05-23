@@ -2,12 +2,13 @@
 <header class="title-with-btn">
 <h2>
   <div class="row">
-    <div class="col-md-6">Users</div>
+    <div class="col-md-6">Users({{tablelist.total}})</div>
     <div class="col-md-6 text-right">
         <button type="button" class="abtn btn btn-success btn-sm" title="Refresh" autofocus><span class="fa fa-sync"></span></button>
         <a class="abtn btn btn-success btn-sm" [routerLink]="['/amt/user/create']" title="New User"><span class="fa fa-plus"></span></a>
-        <button class="abtn btn btn-primary btn-sm" href="javascript:void(0);" title="Previous" (click)="getUsersPreviousData()" [disabled]="1==tablelist.page"><span class="fa fa-step-backward"></span></button>
-        <button class="abtn btn btn-primary btn-sm" href="javascript:void(0);" title="Next" (click)="getUsersNextData()" [disabled]="tablelist.pages==tablelist.page"><span class="fa fa-step-forward"></span></button>
+        <button class="abtn btn btn-primary btn-sm" title="Previous" (click)="getUsersPreviousData()" [disabled]="1==tablelist.page"><span class="fa fa-step-backward"></span></button>
+        <button class="btn btn-primary btn-sm" title="page"><span class="">{{tablelist.page}}</span></button>
+        <button class="abtn btn btn-primary btn-sm" title="Next" (click)="getUsersNextData()" [disabled]="tablelist.pages==tablelist.page"><span class="fa fa-step-forward"></span></button>
     </div>
   </div> 
   
