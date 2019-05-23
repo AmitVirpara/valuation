@@ -28,3 +28,18 @@ body{
 .abtn{
     margin: 0px 14px;
 }
+
+.loading{
+    // display:none;
+    z-index: 10000;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: $loading;
+    padding: 49vh;
+    text-align: center;
+}

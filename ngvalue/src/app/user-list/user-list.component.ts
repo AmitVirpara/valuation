@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class UserListComponent implements OnInit {
 
+  loading:boolean = false;
   UserList:any;
   tablelist: any = {
     page: 1,
@@ -41,7 +42,9 @@ export class UserListComponent implements OnInit {
     this.getUserSrvData();
   }
   getUserSrvData(){
+    this.loading = true;
     this.tablelist = this.datasrv.UserList(this.tablelist);
     console.log('ts ', this.tablelist);
+    this.loading = false;
   }
 }
