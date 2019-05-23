@@ -10,15 +10,38 @@ import { Router } from '@angular/router';
 export class UserListComponent implements OnInit {
 
   UserList:any;
+  tablelist: any = {
+    page: 1,
+    pages: 1,
+    limit: 2,
+    total: 5,
+    data: []
+  }
+
   constructor(private datasrv: DataService, private router:Router) { }
 
   ngOnInit() {
-    this.UserList = this.datasrv.UserList().data;
+    this.getUserSrvData();
+    // this.UserList = this.datasrv.UserList(this.tablelist.page, this.tablelist.limit).data;
   }
 
-  doubleclick(id){
+  doubleclick(id:number ){
     console.log('dblclick id', id)
     // this.router.navigateByUrl('/amt/user/edit/',id);
-    this.router.navigate(['/amt/user/edit/:userId'], { queryParams: { userId: id } });
+    // this.router.navigate(['/amt/user/edit/:userId'], { queryParams: { userId: id } });
+    this.router.navigate(['/amt/user/edit'], { queryParams: { userId: id } });
+  }
+  
+  getUsersPreviousData(){
+    this.tablelist.page = ( ( this.tablelist.page - 1 ) <= 0 ) ? 1 : ( this.tablelist.page - 1 );
+    this.getUserSrvData();
+  }
+  getUsersNextData(){
+    this.tablelist.page = ( this.tablelist.page + 1 ) > this.tablelist.pages ? this.tablelist.page : ( this.tablelist.page + 1 );
+    this.getUserSrvData();
+  }
+  getUserSrvData(){
+    this.tablelist = this.datasrv.UserList(this.tablelist);
+    console.log('ts ', this.tablelist);
   }
 }

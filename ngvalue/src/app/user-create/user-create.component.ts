@@ -10,6 +10,7 @@ import { compairPassword } from '../shared/validator';
 })
 export class UserCreateComponent implements OnInit {
 
+  title: String = 'Create';
   userId: Number;
   frmGrpLogin: FormGroup;
   userlogin:any = {
@@ -45,6 +46,7 @@ export class UserCreateComponent implements OnInit {
     this.activeRouter.queryParams.subscribe(params => {
       console.log('Subscribe params', params);
       this.userId = params['userId'];
+      if(this.userId > 0 ) this.title = 'Edit';
       this.userlogin = this.dataservice.userDetails(this.userId);
       console.log('user ', this.userlogin);
       this.frmGrpLogin.controls.displayname.setValue(this.userlogin.displayname);

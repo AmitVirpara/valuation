@@ -6,8 +6,8 @@
     <div class="col-md-6 text-right">
         <button type="button" class="abtn btn btn-success btn-sm" title="Refresh" autofocus><span class="fa fa-sync"></span></button>
         <a class="abtn btn btn-success btn-sm" [routerLink]="['/amt/user/create']" title="New User"><span class="fa fa-plus"></span></a>
-        <a class="abtn btn btn-primary btn-sm" href="javascript:void(0);" title="Previous"><span class="fa fa-step-backward"></span></a>
-        <a class="abtn btn btn-primary btn-sm" href="javascript:void(0);" title="Next"><span class="fa fa-step-forward"></span></a>
+        <button class="abtn btn btn-primary btn-sm" href="javascript:void(0);" title="Previous" (click)="getUsersPreviousData()" [disabled]="1==tablelist.page"><span class="fa fa-step-backward"></span></button>
+        <button class="abtn btn btn-primary btn-sm" href="javascript:void(0);" title="Next" (click)="getUsersNextData()" [disabled]="tablelist.pages==tablelist.page"><span class="fa fa-step-forward"></span></button>
     </div>
   </div> 
   
@@ -27,7 +27,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let ud of UserList" (dblclick)="doubleclick(ud.id)">
+      <tr *ngFor="let ud of tablelist.data" (dblclick)="doubleclick(ud.id)">
         <td>{{ud.id}}</td>
         <td>{{ud.name}}</td>
         <td>{{ud.displayname}}</td>
