@@ -2,20 +2,58 @@ import { Injectable } from '@angular/core';
 import { unusedValueExportToPlacateAjd } from '@angular/core/src/render3/interfaces/i18n';
 // import { HttpClient } from 'selenium-webdriver/http';
 // import { Observable } from 'rxjs';
-// import { User } from './user';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { catchError, map, tap } from 'rxjs/operators';
+import { User } from './user';
+import { Observer, Observable, of } from 'rxjs';
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })//"Access-Control-Allow-Origin": "*"
+};
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
-  private apiUrl = 'api/heroes';
+  private apiUrl = 'http://localhost/laravalue/public/api/';
+  
+
   constructor(
-    // private http: HttpClient
+    private http: HttpClient
     ) { }
 
-  userLogin():any {
-    return {displayname:'Amit V', name:'Amit', email: 'amtvirpara@gmail.com'}
+  /** Log a HeroService message with the MessageService */
+  private log(message: string) {
+    console.log(`DataService: ${message}`);
   }
+  /**
+   * Handle Http operation that failed.
+   * Let the app continue.
+   * @param operation - name of the operation that failed
+   * @param result - optional value to return as the observable result
+   */
+  private handleError<T> (operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+
+      // TODO: send the error to remote logging infrastructure
+      console.error(error); // log to console instead
+
+      // TODO: better job of transforming error for user consumption
+      this.log(`${operation} failed: ${error.message}`);
+
+      // Let the app keep running by returning an empty result.
+      return of(result as T);
+    };
+  }
+  userLogin( userdata ): Observable <any> {
+    // this.http.
+    return this.http.get<any>(this.apiUrl+'test')
+    .pipe(
+      catchError(this.handleError<any>('userLogin'))
+    );
+  } 
+  // {
+    // return {displayname:'Amit V', name:'Amit', email: 'amtvirpara@gmail.com'}
+  // }
 
   UserCreate():any {    
     return [{name:'amit'}];

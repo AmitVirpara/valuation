@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { DataService } from '../../shared/data.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -21,7 +22,7 @@ export class LoginComponent implements OnInit {
   get email() { return this.userlogin.email; }
   get password() { return this.frmGrpLogin.controls.password; }
 
-  constructor(private frmBuilder: FormBuilder, private route:Router,) { }
+  constructor(private frmBuilder: FormBuilder, private route:Router, private datasrv: DataService) { }
 
   ngOnInit() {
 
@@ -33,7 +34,12 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log('form submit', this.frmGrpLogin)
-    this.route.navigateByUrl('amt/work');
+    console.log('form submit', this.frmGrpLogin);
+    let user = this.datasrv.userLogin( this.frmGrpLogin );
+    console.log('user is ', user );
+    user.subscribe( xuser => {
+      console.log(' subscribe ', JSON.stringify(xuser));
+    })
+    // this.route.navigateByUrl('amt/work');
   }
 }
