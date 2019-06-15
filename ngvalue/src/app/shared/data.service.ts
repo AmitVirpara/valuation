@@ -36,6 +36,7 @@ export class DataService {
 
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
+      console.error('API status', error.status ); // log to console instead
 
       // TODO: better job of transforming error for user consumption
       this.log(`${operation} failed: ${error.message}`);
@@ -44,9 +45,9 @@ export class DataService {
       return of(result as T);
     };
   }
-  userLogin( userdata ): Observable <any> {
+  userLogin( userdata: any ): Observable <any> {
     // this.http.
-    return this.http.get<any>(this.apiUrl+'test')
+    return this.http.post<any>(this.apiUrl+'user/login', userdata)
     .pipe(
       catchError(this.handleError<any>('userLogin'))
     );
@@ -55,8 +56,11 @@ export class DataService {
     // return {displayname:'Amit V', name:'Amit', email: 'amtvirpara@gmail.com'}
   // }
 
-  UserCreate():any {    
-    return [{name:'amit'}];
+  userCreate( userdata: any ):any {    
+    return this.http.post<any>(this.apiUrl+'user/create', userdata)
+    .pipe(
+      catchError(this.handleError<any>('userCreate'))
+    );
   }
   userDetails(id: Number):any {
     console.log('userDetails', id);

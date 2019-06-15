@@ -9,6 +9,11 @@
         </div>
       </div>
       <div class="row">
+        <div class="col-md-12" *ngIf="login_msg">
+          <div class="alert alert-warning" role="alert">
+              {{login_msg}}
+          </div>
+        </div>
         <div class="col-md-12">
             <form [formGroup]="frmGrpLogin" (ngSubmit)="onSubmit()">
               <div class="form-group">
@@ -48,4 +53,4 @@
   </div>
 </div>
 </section>
-<a href="work">Work</a>
+<!-- <a href="work">Work</a> -->

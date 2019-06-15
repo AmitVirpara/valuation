@@ -12,7 +12,7 @@ export class UserCreateComponent implements OnInit {
 
   title: String = 'Create';
   userId: Number;
-  frmGrpLogin: FormGroup;
+  frmGrpUser: FormGroup;
   userlogin:any = {
     displayname:'',
     name:'',
@@ -21,27 +21,27 @@ export class UserCreateComponent implements OnInit {
     cpassword:''
   };
 
-  get frmgrplogin() { return this.frmGrpLogin; }
-  get displayname() { return this.frmGrpLogin.controls.displayname; }
-  get name() { return this.frmGrpLogin.controls.name; }
-  get email() { return this.userlogin.email; }
-  get password() { return this.frmGrpLogin.controls.password; }
-  get cpassword() { return this.frmGrpLogin.controls.cpassword; }
+  get frmgrpuser() { return this.frmGrpUser; }
+  get displayname() { return this.frmGrpUser.controls.displayname; }
+  get name() { return this.frmGrpUser.controls.name; }
+  get email() { return this.frmGrpUser.controls.email ; } //return this.userlogin.email; }
+  get password() { return this.frmGrpUser.controls.password; }
+  get cpassword() { return this.frmGrpUser.controls.cpassword; }
   constructor(private frmBuilder: FormBuilder, private route:Router, private activeRouter: ActivatedRoute, private dataservice: DataService) {
 
    }
 
   ngOnInit() {
-    this.frmGrpLogin = this.frmBuilder.group({
+    this.frmGrpUser = this.frmBuilder.group({
       displayname : ['', [ Validators.required, Validators.minLength(4) ] ],
-      name : ['', [ Validators.required, Validators.minLength(4) ] ],
+      email : ['', [ Validators.required, Validators.minLength(4) ] ],
       password : ['', [ Validators.required, Validators.minLength(4), compairPassword ] ],
       cpassword : ['', Validators.compose([ Validators.required, Validators.minLength(4), compairPassword ]) ],
     }
     );
 
-    this.frmGrpLogin.controls.password.valueChanges.subscribe(
-      x=>this.frmGrpLogin.controls.cpassword.updateValueAndValidity()
+    this.frmGrpUser.controls.password.valueChanges.subscribe(
+      x=>this.frmGrpUser.controls.cpassword.updateValueAndValidity()
     );
     this.activeRouter.queryParams.subscribe(params => {
       console.log('Subscribe params', params);
@@ -49,9 +49,9 @@ export class UserCreateComponent implements OnInit {
       if(this.userId > 0 ) this.title = 'Edit';
       this.userlogin = this.dataservice.userDetails(this.userId);
       console.log('user ', this.userlogin);
-      this.frmGrpLogin.controls.displayname.setValue(this.userlogin.displayname);
-      this.frmGrpLogin.controls.name.setValue(this.userlogin.email);
-      this.frmGrpLogin.controls.password.setValue(this.userlogin.password);
+      this.frmGrpUser.controls.displayname.setValue(this.userlogin.displayname);
+      this.frmGrpUser.controls.email.setValue(this.userlogin.email);
+      this.frmGrpUser.controls.password.setValue(this.userlogin.password);
     })
   }
   checkPasswords(group: FormGroup) { // here we have the 'passwords' group
@@ -62,10 +62,13 @@ export class UserCreateComponent implements OnInit {
     return true;
   }
   logs(){
-    console.log((this.frmGrpLogin.controls.cpassword.errors) )
+    console.log((this.frmGrpUser.controls.cpassword.errors) )
   }
   onSubmit(){
-    console.log('create user form submit', this.frmGrpLogin)
+    console.log('create user form submit', this.frmGrpUser)
+    this.dataservice.userCreate(this.frmGrpUser.value).subscribe( udata => {
+      console.log('create user data ', udata);
+    })
    // this.route.navigateByUrl('amt/work');
   }
   

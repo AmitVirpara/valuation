@@ -10,6 +10,7 @@ import { DataService } from '../../shared/data.service';
 export class LoginComponent implements OnInit {
 
   title = 'Ng Value';
+  login_msg: string = null;
   frmGrpLogin: FormGroup;
   userlogin:any = {
     name:'',
@@ -35,11 +36,20 @@ export class LoginComponent implements OnInit {
 
   onSubmit(){
     console.log('form submit', this.frmGrpLogin);
-    let user = this.datasrv.userLogin( this.frmGrpLogin );
+    let user = this.datasrv.userLogin( this.frmGrpLogin.value );
     console.log('user is ', user );
     user.subscribe( xuser => {
-      console.log(' subscribe ', JSON.stringify(xuser));
-    })
-    // this.route.navigateByUrl('amt/work');
+        console.log(' subscribe ', JSON.stringify(xuser));
+        if(xuser.login) {
+          this.route.navigateByUrl('amt/work');
+        } else {
+          console.log(' Login false ')
+          this.login_msg = 'Please check your email / password.'
+        }
+      },
+      error => {
+        console.log(' subscribe error ', error );
+      }
+    )
   }
 }

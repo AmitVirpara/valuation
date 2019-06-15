@@ -12,9 +12,9 @@
   <div>
       <div class="row">
         <div class="col-md-12">
-          <form [formGroup]="frmGrpLogin" (ngSubmit)="onSubmit()">
+          <form [formGroup]="frmGrpUser" (ngSubmit)="onSubmit()">
             <div class="form-group">
-              <label for="name">Display Name</label>
+              <label for="displayname">Display Name</label>
               <input type="text" id="displayname" formControlName="displayname"  class="form-control" [ngClass]="{ 'is-invalid': displayname.invalid && (displayname.dirty || displayname.touched) }" placeholder="Enter Display Name">
               <div *ngIf="displayname.invalid && (displayname.dirty || displayname.touched)"  class="alert alert-error" role="alert">
                 <div *ngIf="displayname.errors.required">
@@ -26,14 +26,14 @@
               </div>
             </div>
             <div class="form-group">
-              <label for="name">Email/Name</label>
-              <input type="email" id="name" formControlName="name"  class="form-control" [ngClass]="{ 'is-invalid': name.invalid && (name.dirty || name.touched) }" aria-describedby="emailHelp" placeholder="Enter email">
+              <label for="email">Email</label>
+              <input type="email" id="email" formControlName="email"  class="form-control" [ngClass]="{ 'is-invalid': email.invalid && (email.dirty || email.touched) }" aria-describedby="emailHelp" placeholder="Enter email">
               <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-              <div *ngIf="name.invalid && (name.dirty || name.touched)"  class="alert alert-error" role="alert">
-                <div *ngIf="name.errors.required">
+              <div *ngIf="email.invalid && (email.dirty || email.touched)"  class="alert alert-error" role="alert">
+                <div *ngIf="email.errors.required">
                   Name is required.
                 </div>
-                <div *ngIf="name.errors.minlength">
+                <div *ngIf="email.errors.minlength">
                   Name must be at least 4 characters long.
                 </div>
               </div>
@@ -86,7 +86,7 @@
               <input type="checkbox" class="form-check-input" id="exampleCheck1">
               <label class="form-check-label" for="exampleCheck1">Remember me!</label>
             </div>
-            <button type="submit" [disabled]="!frmGrpLogin.valid" class="btn btn-block btn-primary">Login</button>
+            <button type="submit" [disabled]="!frmGrpUser.valid" class="btn btn-block btn-primary">Login</button>
           </form>
       </div>
     </div>
