@@ -62,13 +62,30 @@ export class DataService {
       catchError(this.handleError<any>('userCreate'))
     );
   }
+  userEdit( userdata: any ):any {    
+    return this.http.post<any>(this.apiUrl+'user/edit', userdata)
+    .pipe(
+      catchError(this.handleError<any>('userEdit'))
+    );
+  }
   userDetails(id: Number):any {
     console.log('userDetails', id);
-    return {id:1, displayname:'Amit 1', name:'Amit', password:'mypass', cpassword:'', email: 'amtvirpara@gmail.com'};
+    // return {id:1, displayname:'Amit 1', name:'Amit', password:'mypass', cpassword:'', email: 'amtvirpara@gmail.com'};
+    return this.http.post<any>(this.apiUrl+'user/detail', {id: id})
+    .pipe(
+      catchError(this.handleError<any>('userLogin'))
+    );
   }
   UserDelete():any {
     return true;
   }
+  getUserList( pagedata: any ) {
+    return this.http.get<any>(this.apiUrl+'user/list?page='+pagedata.page, {} )
+    .pipe(
+      catchError(this.handleError<any>('getUserList'))
+    );
+  }
+
   UserList(tablelist:any):any {
     console.log('data, ', tablelist);
     let userData = {

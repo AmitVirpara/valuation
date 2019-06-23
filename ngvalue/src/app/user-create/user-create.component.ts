@@ -46,12 +46,31 @@ export class UserCreateComponent implements OnInit {
     this.activeRouter.queryParams.subscribe(params => {
       console.log('Subscribe params', params);
       this.userId = params['userId'];
-      if(this.userId > 0 ) this.title = 'Edit';
-      this.userlogin = this.dataservice.userDetails(this.userId);
-      console.log('user ', this.userlogin);
-      this.frmGrpUser.controls.displayname.setValue(this.userlogin.displayname);
-      this.frmGrpUser.controls.email.setValue(this.userlogin.email);
-      this.frmGrpUser.controls.password.setValue(this.userlogin.password);
+      if(this.userId > 0 ){
+        this.title = 'Edit';
+        
+        this.dataservice.userDetails(this.userId).subscribe( edituser => {
+          console.log(' subscribe ', JSON.stringify(edituser));
+          if(edituser.result) {
+            this.userlogin = edituser.data;
+            console.log('user ', this.userlogin);
+            this.frmGrpUser.controls.displayname.setValue(this.userlogin.name);
+            this.frmGrpUser.controls.email.setValue(this.userlogin.email);
+            // this.frmGrpUser.controls.password.setValue(this.userlogin.password);
+          } else {
+            console.log(' user list false ', edituser)
+          }
+        },
+        error => {
+          console.log(' subscribe error ', error );
+        });
+
+      } 
+
+
+      
+
+
     })
   }
   checkPasswords(group: FormGroup) { // here we have the 'passwords' group
@@ -65,10 +84,20 @@ export class UserCreateComponent implements OnInit {
     console.log((this.frmGrpUser.controls.cpassword.errors) )
   }
   onSubmit(){
+    if(this.userId > 0 && this.userId != null ) {
+      //update
+      var reqData = this.frmGrpUser.value;
+      reqData.id = this.userId;
+      this.dataservice.userEdit(reqData).subscribe( udata => {
+        console.log('update user data ', udata);
+      })
+    } else {
+      //create
+      this.dataservice.userCreate(this.frmGrpUser.value).subscribe( udata => {
+        console.log('create user data ', udata);
+      })
+    }
     console.log('create user form submit', this.frmGrpUser)
-    this.dataservice.userCreate(this.frmGrpUser.value).subscribe( udata => {
-      console.log('create user data ', udata);
-    })
    // this.route.navigateByUrl('amt/work');
   }
   
